@@ -1,0 +1,22 @@
+{
+  "name": "Spring Boot Maven",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "installMaven": true,
+      "installGradle": false
+    }
+  },
+  "forwardPorts": [8080],
+  "postCreateCommand": "./mvnw clean install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "redhat.java",
+        "vmware.vscode-spring-boot"
+      ]
+    }
+  }
+}
