@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>冒险中 - [[${context.player.name}]]</title>
+    <style>
+        body { font-family: 'Courier New', monospace; max-width: 800px; margin: 0 auto; padding: 20px; }
+        #game-output { white-space: pre-wrap; background: #f5f5f5; padding: 15px; border-radius: 5px; }
+        #input-form { margin-top: 20px; }
+        input { padding: 8px; width: 70%; }
+        button { padding: 8px 15px; }
+        .message { color: green; margin: 10px 0; }
+        .error { color: red; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>冒险日志 - [[${context.player.name}]]</h1>
+    
+    <div th:if="${message}" th:text="${message}" class="message"></div>
+    <div th:if="${error}" th:text="${error}" class="error"></div>
+    
+    <div id="game-output" th:text="${output}"></div>
+    
+    <form id="input-form" action="/game-action" method="post">
+        <input type="text" name="input" placeholder="输入指令..." autofocus>
+        <button type="submit">执行</button>
+    </form>
+    
+    <form action="/save-game" method="post" style="margin-top: 10px;">
+        <button type="submit">保存游戏进度</button>
+    </form>
+    
+    <script>
+        // 自动聚焦到输入框
+        document.querySelector('input').focus();
+    </script>
+</body>
+</html>
