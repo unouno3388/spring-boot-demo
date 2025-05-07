@@ -5,7 +5,10 @@ package com.mygame.server.service;
  import com.mygame.server.model.Room;
  import com.mygame.server.repository.RoomRepository; // 確保注入 RoomRepository
  import org.springframework.stereotype.Service;
- import org.springframework.beans.factory.annotation.Autowired; // 引入 Autowired
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired; // 引入 Autowired
  //import java.util.Map;
 
  @Service
@@ -56,7 +59,16 @@ package com.mygame.server.service;
          room.setHasPotion(hasPotion);
          roomRepository.save(room);
      }
+     public Room getRoomById(Long roomId) {
+        if (roomId == null) {
+            System.out.println("RoomService.getRoomById() 收到 null ID。");
+            return null;  // 或者你可以選擇拋出一個特定的例外，例如 IllegalArgumentException
+        }
 
+        Optional<Room> room = roomRepository.findById(roomId);
+        return room.orElse(null); // 如果找不到房間，返回 null
+        //return room.orElseThrow(() -> new RuntimeException("房間不存在，ID: " + roomId)); // 原本的程式碼，找不到房間時拋出例外
+    }
      public void addItemToRoom(Room room, Item item) {
          //  room.getItems().add(item); // 假設 Room 有 getItems() 方法
          //  roomRepository.save(room);

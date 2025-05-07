@@ -26,6 +26,9 @@ package com.mygame.server.service;
          player.setDefense(baseDefense);
          return playerRepository.save(player); // 使用 repository.save() 保存玩家
      }
+     //public Player savePlayer(Player player) {
+      //  return playerRepository.save(player);
+    //}
      public void setCurrentRoomId(Player player ,Long ID)
      {
         player.setCurrentRoomId(ID);
@@ -118,6 +121,21 @@ package com.mygame.server.service;
          return null;
      }
 
+     //public Player findByName(String name) 
+     //{
+        
+     //   return playerRepository.findByName(name);
+     //}
+     public Player findByName(String name) {
+        System.out.println("PlayerService.findByName() 查詢玩家: " + name); // 記錄查詢的名稱
+        Player player = playerRepository.findByName(name);
+        if (player != null) {
+            System.out.println("PlayerService.findByName() 查詢結果: " + player.toString()); // 記錄查詢結果
+        } else {
+            System.out.println("PlayerService.findByName() 查詢結果: null");
+        }
+        return player;
+    }
      public String displayEquipment(Player player) {
          StringBuilder output = new StringBuilder();
          if (player.getEquipment().isEmpty()) {

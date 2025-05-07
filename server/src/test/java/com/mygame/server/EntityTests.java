@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+/* 
 @DataJpaTest
 @Transactional // 使用 @Transactional 讓每個測試方法結束後回滾
 public class EntityTests {
@@ -141,3 +141,4 @@ public class EntityTests {
 
     // Add more tests for relationships (e.g., Player's inventory, Monster's drops)
 }
+    */

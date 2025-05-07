@@ -2,6 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>遊戲入口</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .error { color: red; margin: 10px 0; }
+        input { padding: 8px; width: 100%; margin: 10px 0; }
+        button { padding: 10px 15px; background: #4CAF50; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>歡迎來到文字冒險遊戲</h1>
+    <form action="/start-game" method="post">
+        <label for="playerName">請輸入您的角色名:</label>
+        <input type="text" id="playerName" name="playerName" required>
+        <button type="submit">開始冒險</button>
+    </form>
+    <div th:if="${error}" th:text="${error}" class="error"></div>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
     <title>游戏入口</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -13,7 +39,7 @@
 <body>
     <h1>欢迎来到文字冒险游戏</h1>
     <form action="/start-game" method="post">
-        <!--<input type="hidden" name="_csrf" th:value="${_csrf.token}"/>-->
+        <!--<input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
         <label for="playerName">请输入您的角色名:</label>
         <input type="text" id="playerName" name="playerName" required>
         <button type="submit">开始冒险</button>
@@ -21,3 +47,4 @@
     <div th:if="${error}" th:text="${error}" class="error"></div>
 </body>
 </html>
+-->

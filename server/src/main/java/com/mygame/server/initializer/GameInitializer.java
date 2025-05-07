@@ -28,7 +28,7 @@ public class GameInitializer {
         //this.itemFactory = itemFactory;
     }
 
-    public GameContext init() {
+    public GameContext init(String playerName) {
         Room forest = roomService.createNewRoom("森林入口", "你站在茂密森林的邊緣");
         Room temple = roomService.createNewRoom("神殿大廳", "光線從破碎的石窗灑落");
 
@@ -43,7 +43,7 @@ public class GameInitializer {
         roomService.setExit(forest, "north", temple);
         roomService.setExit(temple, "south", forest);
 
-        Player player = playerService.createNewPlayer("勇者", 100, 15, 5);
+        Player player = playerService.createNewPlayer(playerName, 100, 15, 5);
 
         // 使用 ItemService (它會使用 ItemFactory) 創建物品
         Item sword = itemService.createNewItem("鐵劍", "一把鋒利的鐵劍", 5, 0, 0);
@@ -60,6 +60,9 @@ public class GameInitializer {
 
         monsterService.addDrop(warrior, rustySword);
 
-        return new GameContext(player, forest);
+        GameContext context = new GameContext(playerService, roomService);
+        context.setPlayer(player);
+        context.setCurrentRoom(forest);
+        return context;
     }
 }
