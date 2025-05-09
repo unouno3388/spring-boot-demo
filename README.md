@@ -34,6 +34,7 @@ spring.h2.console.path=/h2-console
 #spring.h2.console.enabled=true
 #spring.h2.console.path=/h2-console 
 
+並在終端機設立環境變數export SPRING_PROFILES_ACTIVE=local
 這樣本地測試會使用無持久化的H2Data Base
 
 2.請確認mvnw的java版本是否為17
