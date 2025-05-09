@@ -20,7 +20,7 @@ public class Room {
 
     private boolean hasPotion;
 
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(
             name = "room_exits",
             joinColumns = @JoinColumn(name = "room_id"),

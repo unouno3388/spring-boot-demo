@@ -5,6 +5,7 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -34,14 +35,33 @@ public class Player {
     )
     private List<Item> inventory = new ArrayList<>();
 
-    private Long currentRoomId; //  新增：玩家目前所在房間的 ID
+    private Long currentRoomId;
+
+    public Player() {
+    }
 
     public boolean isAlive() {
         return hp > 0;
     }
-    
-    // 你可能還需要添加無參數的建構子 (no-argument constructor)
-    public Player() {
+
+    // 添加 getEquipmentString 方法供前端使用
+    public String getEquipmentString() {
+        if (equipment == null || equipment.isEmpty()) {
+            return "無裝備";
+        }
+        return equipment.stream()
+                .map(item -> item != null ? item.getName() : "未知物品")
+                .collect(Collectors.joining(", "));
+    }
+
+    // 添加 getInventoryString 方法供前端使用
+    public String getInventoryString() {
+        if (inventory == null || inventory.isEmpty()) {
+            return "無物品";
+        }
+        return inventory.stream()
+                .map(item -> item != null ? item.getName() : "未知物品")
+                .collect(Collectors.joining(", "));
     }
 
     @Override
@@ -49,12 +69,20 @@ public class Player {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return hp == player.hp && baseAttack == player.baseAttack && attack == player.attack && defense == player.defense && killCount == player.killCount && totalDamage == player.totalDamage && Objects.equals(id, player.id) && Objects.equals(name, player.name) && Objects.equals(equipment, player.equipment) && Objects.equals(inventory, player.inventory);
+        return hp == player.hp &&
+               baseAttack == player.baseAttack &&
+               attack == player.attack &&
+               defense == player.defense &&
+               killCount == player.killCount &&
+               totalDamage == player.totalDamage &&
+               Objects.equals(id, player.id) &&
+               Objects.equals(name, player.name) &&
+               Objects.equals(currentRoomId, player.currentRoomId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, hp, baseAttack, attack, defense, killCount, totalDamage, equipment, inventory);
+        return Objects.hash(id, name, hp, baseAttack, attack, defense, killCount, totalDamage, currentRoomId);
     }
 
     @Override
@@ -68,9 +96,9 @@ public class Player {
                ", defense=" + defense +
                ", killCount=" + killCount +
                ", totalDamage=" + totalDamage +
-               ", equipment=" + equipment +
-               ", inventory=" + inventory +
+               ", equipmentCount=" + (equipment != null ? equipment.size() : 0) +
+               ", inventoryCount=" + (inventory != null ? inventory.size() : 0) +
+               ", currentRoomId=" + currentRoomId +
                '}';
     }
-
 }

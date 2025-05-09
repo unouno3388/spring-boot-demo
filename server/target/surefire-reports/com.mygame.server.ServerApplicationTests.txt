@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mygame.server.ServerApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.561 s -- in com.mygame.server.ServerApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.869 s -- in com.mygame.server.ServerApplicationTests

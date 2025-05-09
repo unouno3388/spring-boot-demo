@@ -31,7 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired; // 引入 Autowir
      public String getExitString(Room room) {
          return String.join(", ", room.getExits().keySet());
      }
-
+     
      public void setExit(Room room, String direction, Room exitRoom) {
          room.getExits().put(direction, exitRoom);
          roomRepository.save(room);

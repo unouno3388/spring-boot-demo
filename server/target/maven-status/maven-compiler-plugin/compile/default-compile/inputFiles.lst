@@ -2,7 +2,6 @@
 /workspaces/spring-boot-demo/server/src/main/java/com/mygame/server/Config/GameConfig.java
 /workspaces/spring-boot-demo/server/src/main/java/com/mygame/server/Config/SecurityConfig.java
 /workspaces/spring-boot-demo/server/src/main/java/com/mygame/server/Config/WebSocketConfig.java
-/workspaces/spring-boot-demo/server/src/main/java/com/mygame/server/Handler/EchoWebSocketHandler.java
 /workspaces/spring-boot-demo/server/src/main/java/com/mygame/server/Hello.java
 /workspaces/spring-boot-demo/server/src/main/java/com/mygame/server/ServerApplication.java
 /workspaces/spring-boot-demo/server/src/main/java/com/mygame/server/command/AttackCommand.java

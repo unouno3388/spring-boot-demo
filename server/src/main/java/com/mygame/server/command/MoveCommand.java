@@ -10,13 +10,12 @@ import com.mygame.server.service.MonsterService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Component;
 
-//@Component
 public class MoveCommand implements Command {
 
     private final String destination;
     private final RoomService roomService;
     private final MonsterService monsterService;
-    //@Autowired
+
     public MoveCommand(String destination, RoomService roomService, MonsterService monsterService) {
         this.destination = destination.trim();
         this.roomService = roomService;
@@ -31,6 +30,7 @@ public class MoveCommand implements Command {
 
         if (nextRoom != null) {
             context.setCurrentRoom(nextRoom);
+            nextRoom.getExits().size(); // 主動加載新房間的 exits
             output.append("你移動到了： ").append(nextRoom.getName()).append("\n");
 
             Monster monster = nextRoom.getMonster();
@@ -40,7 +40,6 @@ public class MoveCommand implements Command {
 
             String exits = roomService.getExitString(nextRoom);
             output.append("可用方向： ").append(exits).append("\n");
-
         } else {
             output.append("無法往 ").append(destination).append(" 移動。\n");
         }
