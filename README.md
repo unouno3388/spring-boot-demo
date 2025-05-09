@@ -2,6 +2,7 @@
 1.請在resources資料夾中添加名為application-local.properties檔案
 內容
 spring.application.name=server
+
 server.forward-headers-strategy=framework
 server.use-forward-headers=true
 spring.mvc.servlet.load-on-startup=1
@@ -14,6 +15,7 @@ logging.level.org.springframework.security=DEBUG
 spring.thymeleaf.prefix=classpath:/templates/
 spring.thymeleaf.suffix=.html
 spring.thymeleaf.cache=false 
+spring.jpa.open-in-view=false
 spring.web.resources.static-locations=classpath:/static/
 spring.mvc.static-path-pattern=/**
 spring.thymeleaf.mode=HTML
